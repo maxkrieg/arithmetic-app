@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="questionsApp">
+<html >
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,13 @@
   <!-- Bootstrap CSS & Custom CSS -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
+
+
+</head>
+
+<body ng-app="questionsApp">
+  <div ng-view></div>
+
   <!-- Angular and angular routes -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
@@ -21,16 +28,12 @@
   <!-- global app values -->
   <scirpt src='app/services/values.js'></script>
   <!-- questions factory -->
-  <script src="app/services/customersFactory.js"></script>
+  <script src="app/services/questionsFactory.js"></script>
   <!-- questions controller -->
-  <script src="app/controllers/customersController.js"></script>
+  <script src="app/controllers/questionsController.js"></script>
   <!-- distractors controller -->
-  <script src="app/controllers/ordersController.js"></script>
+  <script src="app/controllers/distractorsController.js"></script>
 
-</head>
-
-<body>
-  <div ng-view></div>
 </body>
 
 </html>
