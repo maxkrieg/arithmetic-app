@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="questionsApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Questions App</title>
+  <!-- Bootstrap CSS & Custom CSS -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Angular and angular routes -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+  <!-- main app file -->
+  <script src='app/app.js'></script>
+  <!-- global app values -->
+  <scirpt src='app/services/values.js'></script>
+  <!-- questions factory -->
+  <script src="app/services/customersFactory.js"></script>
+  <!-- questions controller -->
+  <script src="app/controllers/customersController.js"></script>
+  <!-- distractors controller -->
+  <script src="app/controllers/ordersController.js"></script>
+
+</head>
+
+<body>
+  <div ng-view></div>
+</body>
+
+</html>
