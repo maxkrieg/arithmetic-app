@@ -9,7 +9,7 @@
       })
       .when('/viewquestion/:question_id', {
         templateUrl: 'app/views/viewquestion.html',
-        controller: 'distractorsController as distractorsCtrl'
+        controller: 'viewQuestionController as viewQuestionCtrl'
       })
       .otherwise({
         redirectTo: '/'
