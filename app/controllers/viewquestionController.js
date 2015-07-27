@@ -3,6 +3,7 @@
   var ViewQuestionController = function(questionsFactory, distractorsFactory, $routeParams) {
     var questionId = $routeParams.question_id;
     var vm = this;
+    vm.operators = questionsFactory.operators;
     vm.question = {};
     vm.distractors = [];
 
@@ -26,8 +27,24 @@
         });
 
     }
-
     init();
+
+    vm.calculatedAnswer = function(first_operand, second_operand, operator) {
+      var first = parseInt(first_operand),
+        second = parseInt(second_operand),
+        answer;
+      console.log("operator: " + operator);
+      console.log("operator 2: " + vm.question.operator);
+      if (operator === "*") {
+        answer = first * second;
+      } else if (operator === "+") {
+        answer = first + second;
+      } else if (operator === "-") {
+        answer = first - second;
+      }
+      vm.question.answer = answer.toString();
+      return answer.toString();
+    };
 
   };
 

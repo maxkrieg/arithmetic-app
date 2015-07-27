@@ -4,7 +4,7 @@
 
     var vm = this;
     vm.questions = [];
-    vm.operator = questionsFactory.operators;
+    vm.operators = questionsFactory.operators;
 
 
     function init() {

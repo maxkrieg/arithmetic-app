@@ -2,7 +2,6 @@
 
   var questionsFactory = function($http) {
     var factory = {};
-    factory.operators = ["Addition", "Multiplication", "Subtraction"];
 
     factory.getQuestions = function() {
       return $http.get('http://localhost:3000/questions');
@@ -11,6 +10,21 @@
     factory.getQuestion = function(questionId) {
       return $http.get('http://localhost:3000/questions/' + questionId);
     };
+
+    factory.operators = [{
+      id: "*",
+      name: "Multiplication"
+    }, {
+      id: "+",
+      name: "Addition"
+    }, {
+      id: "-",
+      name: "Subtraction"
+    }];
+
+
+
+
     return factory;
   };
 
