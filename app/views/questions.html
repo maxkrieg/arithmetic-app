@@ -1,8 +1,28 @@
 <div class="container">
   <div class="row">
-    <h1>Arithmetic Questions</h1>
+    <div class="col-xs-4">
+      <h1>Arithmetic Questions</h1>
+      <button type="button" class="btn btn-primary">Create New Question</button>
+    </div>
   </div>
-
+  <div class="row">
+    <div class="input-field col-xs-4">
+      <select>
+          <option value="" disabled selected>Filter by Operator</option>
+          <option ng-repeat="operator in questionsCtrl.operator">{{operator}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="list-group">
+        <a href="#/question/{{question.id}}" class="list-group-item" ng-repeat="question in questionsCtrl.questions">{{question.title}}</a>
+      </div>
+    </div>
+  </div>
+  <div>
+    {{questionsCtrl.questions}}
+  </div>
 
 
 </div>

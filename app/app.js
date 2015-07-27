@@ -5,13 +5,11 @@
     $routeProvider
       .when('/', {
         templateUrl: 'app/views/questions.html',
-        controller: 'questionsController',
-        constrollerAs: 'questionsCtrl'
+        controller: 'questionsController as questionsCtrl'
       })
-      .when('/distractors/:question_id', {
-        templateUrl: 'app/views/distractors.html',
-        controller: 'distractorsController',
-        controllerAs: 'distractorsCtrl'
+      .when('/viewquestion/:question_id', {
+        templateUrl: 'app/views/viewquestion.html',
+        controller: 'distractorsController as distractorsCtrl'
       })
       .otherwise({
         redirectTo: '/'
