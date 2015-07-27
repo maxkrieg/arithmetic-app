@@ -1,8 +1,7 @@
 (function viewQuestionControllerIIFE() {
 
-  var ViewQuestionController = function(questionsFactory, distractorsFactory, $routeParams, $route) {
-    var questionId = $routeParams.question_id,
-      distractorId;
+  var ViewQuestionController = function(questionsFactory, distractorsFactory, $routeParams) {
+    var questionId = $routeParams.question_id;
     var vm = this;
     vm.operators = questionsFactory.operators;
     vm.question = {};
@@ -60,6 +59,7 @@
     };
 
     vm.editDistractors = function() {
+      var distractorId;
       vm.distractors.forEach(function(obj) {
         distractorId = obj.id;
         distractorsFactory.editDistractor(questionId, distractorId, {
@@ -78,9 +78,9 @@
       distractorsFactory.createDistractor(questionId, {
         distractor: vm.newDistractor
       })
-        .success(function() {
+        .success(function(obj) {
           console.log('success adding new distractor');
-          $route.reload();
+          vm.distractors.push(obj.distractor);
         })
         .error(function() {
           console.log('error adding new distractor');
@@ -88,9 +88,21 @@
 
     };
 
+    vm.deleteDistractor = function(distractorId, index) {
+      distractorsFactory.deleteDistractor(questionId, distractorId)
+        .success(function() {
+          console.log('success deleting distractor');
+          vm.distractors.splice(index, 1);
+        })
+        .error(function() {
+          console.log('error deleting distractor');
+        });
+
+    };
+
   };
 
-  ViewQuestionController.$inject = ['questionsFactory', 'distractorsFactory', '$routeParams', '$route'];
+  ViewQuestionController.$inject = ['questionsFactory', 'distractorsFactory', '$routeParams'];
 
   // The Controller is part of the module.
   angular.module('questionsApp').controller('viewQuestionController', ViewQuestionController);

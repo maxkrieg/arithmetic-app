@@ -1,11 +1,14 @@
 <div class="container">
+  <!-- VIEW ROW -->
   <div class="row">
     <h1>View Question {{viewQuestionCtrl.question.id}}</h1>
+    <!-- View Question Col -->
     <div class="col-xs-6 col-sm-5">
       <h3>Question</h3>
       <h4>What is {{viewQuestionCtrl.question.first_operand | number}} {{viewQuestionCtrl.question.operator}} {{viewQuestionCtrl.question.second_operand | number}}?</h4>
       <h5>Answer: {{viewQuestionCtrl.calculatedAnswer(viewQuestionCtrl.question.first_operand, viewQuestionCtrl.question.second_operand, viewQuestionCtrl.question.operator) | number}}</h5>
     </div>
+    <!-- View Distractors Col -->
     <div class="col-xs-6 col-sm-5">
       <h3>Distractors</h3>
       <ul>
@@ -14,9 +17,14 @@
     </div>
   </div>
   <hr>
+
+  <!-- EDIT ROW -->
   <div class="row">
+    <!-- Edit Question Col -->
     <div class="col-xs-6 col-sm-5">
+      <!-- Edit Question buttons -->
       <button type="button" class="btn btn-primary" ng-click="editQuestionForm = !editQuestionForm; editDistractorsForm = false; createDistractorForm = false">Edit Question</button>
+      <!-- Edit Question Form -->
       <form ng-show="editQuestionForm">
         <div class="row">
           <div class="col-xs-6">
@@ -43,17 +51,28 @@
         <button type="cancel" class="btn btn-sm btn-default" ng-click="editQuestionForm = !editQuestionForm;">Cancel</button>
       </form>
     </div>
+
+    <!-- Edit Distractor Col -->
     <div class="col-xs-6 col-sm-5">
+      <!-- Edit Distractor Buttons -->
       <button type="button" class="btn btn-primary" ng-click="editDistractorsForm = !editDistractorsForm; editQuestionForm = false; createDistractorForm = false">Edit Distractors</button>
 
       <button type="button" class="btn btn-primary" ng-click="editDistractorsForm = false; editQuestionForm = false; createDistractorForm = !createDistractorForm">Add Distractor</button>
 
+      <!-- Edit Distractors Form -->
       <form ng-show="editDistractorsForm">
-        <input type="text" class="form-control" id="" ng-repeat="distractor in viewQuestionCtrl.distractors" ng-model="distractor.distractor">
+        <div class="input-group" ng-repeat="distractor in viewQuestionCtrl.distractors">
+          <input type="text" class="form-control" id="" ng-model="distractor.distractor">
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button" ng-click="viewQuestionCtrl.deleteDistractor(distractor.id, $index)">X</button>
+          </span>
+        </div>
+
         <button type="submit" class="btn btn-sm btn-default" ng-click="viewQuestionCtrl.editDistractors(); editDistractorsForm = !editDistractorsForm;">Save</button>
         <button type="cancel" class="btn btn-sm btn-default" ng-click="editDistractorsForm = !editDistractorsForm">Cancel</button>
       </form>
 
+      <!-- Add Distractors Form -->
       <form ng-show="createDistractorForm">
         <input type="text" class="form-control" id="" ng-model="viewQuestionCtrl.newDistractor.distractor">
         <button type="submit" class="btn btn-sm btn-default" ng-click="viewQuestionCtrl.addDistractor(); createDistractorForm = !createDistractorForm;">Save</button>

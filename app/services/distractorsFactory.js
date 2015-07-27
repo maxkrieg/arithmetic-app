@@ -15,6 +15,10 @@
       return $http.post('http://localhost:3000/questions/' + questionId + '/distractors', data);
     };
 
+    factory.deleteDistractor = function(questionId, distractorId) {
+      return $http.delete('http://localhost:3000/questions/' + questionId + '/distractors/' + distractorId);
+    };
+
     return factory;
   };
 
