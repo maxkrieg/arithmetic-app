@@ -16,8 +16,8 @@
   <hr>
   <div class="row">
     <div class="col-xs-6 col-sm-5">
-      <button type="button" class="btn btn-primary">Edit Question</button>
-      <form>
+      <button type="button" class="btn btn-primary" ng-click="editQuestionForm = !editQuestionForm">Edit Question</button>
+      <form ng-show="editQuestionForm">
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
@@ -38,13 +38,16 @@
             </select>
           </div>
         </div>
-        <button type="submit" class="btn btn-sm btn-default">Save</button>
+        <button type="submit" class="btn btn-sm btn-default" ng-click="viewQuestionCtrl.editQuestion(); editQuestionForm = !editQuestionForm;">Save</button>
+        <button type="submit" class="btn btn-sm btn-default" ng-click="editQuestionForm = !editQuestionForm">Cancel</button>
+      </form>
       </form>
     </div>
     <div class="col-xs-6 col-sm-5">
       <button type="button" class="btn btn-primary">Edit Distractors</button>
     </div>
   </div>
+  <br><br><br>
   {{viewQuestionCtrl.question}}<br>
   {{viewQuestionCtrl.distractors}}
 

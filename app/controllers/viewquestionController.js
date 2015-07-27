@@ -33,8 +33,6 @@
       var first = parseInt(first_operand),
         second = parseInt(second_operand),
         answer;
-      console.log("operator: " + operator);
-      console.log("operator 2: " + vm.question.operator);
       if (operator === "*") {
         answer = first * second;
       } else if (operator === "+") {
@@ -44,6 +42,18 @@
       }
       vm.question.answer = answer.toString();
       return answer.toString();
+    };
+
+    vm.editQuestion = function() {
+      questionsFactory.editQuestion(questionId, {
+        question: vm.question
+      })
+        .success(function() {
+          console.log('success updating question');
+        })
+        .error(function() {
+          console.log('error updating question');
+        });
     };
 
   };

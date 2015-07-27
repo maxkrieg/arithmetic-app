@@ -11,6 +11,10 @@
       return $http.get('http://localhost:3000/questions/' + questionId);
     };
 
+    factory.editQuestion = function(questionId, data) {
+      return $http.put('http://localhost:3000/questions/' + questionId, data);
+    };
+
     factory.operators = [{
       id: "*",
       name: "Multiplication"
