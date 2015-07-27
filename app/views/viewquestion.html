@@ -16,39 +16,59 @@
   <hr>
   <div class="row">
     <div class="col-xs-6 col-sm-5">
-      <button type="button" class="btn btn-primary" ng-click="editQuestionForm = !editQuestionForm">Edit Question</button>
+      <button type="button" class="btn btn-primary" ng-click="editQuestionForm = !editQuestionForm; editDistractorsForm = false; createDistractorForm = false">Edit Question</button>
       <form ng-show="editQuestionForm">
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="exampleInputEmail1">First Operand</label>
+              <label for="first_operand">First Operand</label>
               <input type="text" ng-model="viewQuestionCtrl.question.first_operand" class="form-control" id="first_operand">
             </div>
           </div>
           <div class="col-xs-6">
             <div class="form-group">
-              <label for="exampleInputEmail1">Second Operand</label>
+              <label for="second_operand">Second Operand</label>
               <input type="text" class="form-control" id="second_operand" ng-model="viewQuestionCtrl.question.second_operand">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-5">
+            <label for="operator">Operator</label>
             <select ng-model="viewQuestionCtrl.question.operator" ng-options="obj.id as obj.name for obj in viewQuestionCtrl.operators">
             </select>
           </div>
         </div>
         <button type="submit" class="btn btn-sm btn-default" ng-click="viewQuestionCtrl.editQuestion(); editQuestionForm = !editQuestionForm;">Save</button>
-        <button type="submit" class="btn btn-sm btn-default" ng-click="editQuestionForm = !editQuestionForm">Cancel</button>
-      </form>
+        <button type="cancel" class="btn btn-sm btn-default" ng-click="editQuestionForm = !editQuestionForm;">Cancel</button>
       </form>
     </div>
     <div class="col-xs-6 col-sm-5">
-      <button type="button" class="btn btn-primary">Edit Distractors</button>
+      <button type="button" class="btn btn-primary" ng-click="editDistractorsForm = !editDistractorsForm; editQuestionForm = false; createDistractorForm = false">Edit Distractors</button>
+
+      <button type="button" class="btn btn-primary" ng-click="editDistractorsForm = false; editQuestionForm = false; createDistractorForm = !createDistractorForm">Add Distractor</button>
+
+      <form ng-show="editDistractorsForm">
+        <input type="text" class="form-control" id="" ng-repeat="distractor in viewQuestionCtrl.distractors" ng-model="distractor.distractor">
+        <button type="submit" class="btn btn-sm btn-default" ng-click="viewQuestionCtrl.editDistractors(); editDistractorsForm = !editDistractorsForm;">Save</button>
+        <button type="cancel" class="btn btn-sm btn-default" ng-click="editDistractorsForm = !editDistractorsForm">Cancel</button>
+      </form>
+
+      <form ng-show="createDistractorForm">
+        <input type="text" class="form-control" id="" ng-model="viewQuestionCtrl.newDistractor.distractor">
+        <button type="submit" class="btn btn-sm btn-default" ng-click="viewQuestionCtrl.addDistractor(); createDistractorForm = !createDistractorForm;">Save</button>
+        <button type="cancel" class="btn btn-sm btn-default" ng-click="createDistractorForm = !createDistractorForm">Cancel</button>
+      </form>
+
     </div>
+
   </div>
   <br><br><br>
+  Question:<br>
   {{viewQuestionCtrl.question}}<br>
-  {{viewQuestionCtrl.distractors}}
+  Distractors:<br>
+  {{viewQuestionCtrl.distractors}}<br>
+  New Distractor:<br>
+  {{viewQuestionCtrl.newDistractor}}
 
 </div>
