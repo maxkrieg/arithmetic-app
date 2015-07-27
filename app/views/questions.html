@@ -6,17 +6,20 @@
     </div>
   </div>
   <div class="row">
-    <div class="input-field col-xs-4">
-      <select>
-          <option value="" disabled selected>Filter by Operator</option>
-          <option ng-repeat="operator in questionsCtrl.operators">{{operator}}</option>
-      </select>
+    <div class="input-field col-xs-12">
+      <h4>Filter by Operator</h4>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-warning" ng-click="filters.operator = '*'">Multiplication</button>
+        <button type="button" class="btn btn-warning" ng-click="filters.operator = '+'">Addition</button>
+        <button type="button" class="btn btn-warning" ng-click="filters.operator = '-'">Subtraction</button>
+        <button type="button" class="btn btn-warning" ng-click="filters.operator = ''">All</button>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-6">
       <div class="list-group">
-        <a href="#/viewquestion/{{question.id}}" class="list-group-item" ng-repeat="question in questionsCtrl.questions">
+        <a href="#/viewquestion/{{question.id}}" class="list-group-item" ng-repeat="question in questionsCtrl.questions | filter:filters">
         What is {{question.first_operand | number}} {{question.operator}} {{question.second_operand | number}}?  <strong>{{question.answer | number}}</strong></a>
       </div>
     </div>
