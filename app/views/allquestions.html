@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-4">
       <h1>Arithmetic Questions</h1>
-      <button type="button" class="btn btn-primary">Create New Question</button>
+      <a type="button" class="btn btn-primary" href="#/createquestion">Create New Question</a>
     </div>
   </div>
   <div class="row">
@@ -20,9 +20,9 @@
     <div class="input-field col-xs-12">
       <h4>Sort By:</h4>
       <div class="btn-group btn-group-sm" role="group" aria-label="...">
-        <button type="button" class="btn btn-info" ng-click="questionsCtrl.doSort('first_operand')">First Operand</button>
-        <button type="button" class="btn btn-info" ng-click="questionsCtrl.doSort('second_operand')">Second Operand</button>
-        <button type="button" class="btn btn-info" ng-click="questionsCtrl.doSort('answer')">Answer</button>
+        <button type="button" class="btn btn-info" ng-click="allQuestionsCtrl.doSort('first_operand')">First Operand</button>
+        <button type="button" class="btn btn-info" ng-click="allQuestionsCtrl.doSort('second_operand')">Second Operand</button>
+        <button type="button" class="btn btn-info" ng-click="allQuestionsCtrl.doSort('answer')">Answer</button>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@
     <div class="col-xs-6">
       <dir-pagination-controls></dir-pagination-controls>
       <div class="list-group">
-        <a href="#/viewquestion/{{question.id}}" class="list-group-item" dir-paginate="question in questionsCtrl.questions | filter:filters | itemsPerPage: 20 | orderBy:questionsCtrl.sortBy:questionsCtrl.reverse">
+        <a href="#/viewquestion/{{question.id}}" class="list-group-item" dir-paginate="question in allQuestionsCtrl.questions | filter:filters | itemsPerPage: 20 | orderBy:allQuestionsCtrl.sortBy:allQuestionsCtrl.reverse">
         What is {{question.first_operand | number}} {{question.operator}} {{question.second_operand | number}}?  <strong>{{question.answer | number}}</strong>
         </a>
       </div>
@@ -39,5 +39,5 @@
 
 </div>
 
-<!-- ng-repeat="question in questionsCtrl.questions | filter:filters | orderBy:questionsCtrl.sortBy:questionsCtrl.reverse" -->
+<!-- ng-repeat="question in allQuestionsCtrl.questions | filter:filters | orderBy:allQuestionsCtrl.sortBy:allQuestionsCtrl.reverse" -->
 

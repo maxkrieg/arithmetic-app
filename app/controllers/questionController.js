@@ -1,6 +1,6 @@
-(function viewQuestionControllerIIFE() {
+(function questionControllerIIFE() {
 
-  var ViewQuestionController = function(questionsFactory, distractorsFactory, $routeParams) {
+  var QuestionController = function(questionsFactory, distractorsFactory, $routeParams) {
     var questionId = $routeParams.question_id;
     var vm = this;
     vm.operators = questionsFactory.operators;
@@ -8,6 +8,9 @@
     vm.distractors = [];
     vm.newDistractor = {};
     vm.newDistractor.distractor = "";
+
+    vm.newQuestionForm = {};
+    vm.newQuestionForm.operator = "default";
 
     function init() {
       questionsFactory.getQuestion(questionId)
@@ -32,15 +35,18 @@
     init();
 
     vm.calculatedAnswer = function(first_operand, second_operand, operator) {
-      var answer;
+      var first = parseInt(first_operand),
+        second = parseInt(second_operand),
+        answer;
       if (operator === "*") {
-        answer = first_operand * second_operand;
+        answer = first * second;
       } else if (operator === "+") {
-        answer = first_operand + second_operand;
+        answer = first + second;
       } else if (operator === "-") {
-        answer = first_operand - second_operand;
+        answer = first - second;
       }
       vm.question.answer = answer;
+      vm.newQuestionForm.answer = answer;
       return answer;
     };
 
@@ -79,11 +85,11 @@
         .success(function(obj) {
           console.log('success adding new distractor');
           vm.distractors.push(obj.distractor);
+          vm.newDistractor.distractor = "";
         })
         .error(function() {
           console.log('error adding new distractor');
         });
-
     };
 
     vm.deleteDistractor = function(distractorId, index) {
@@ -102,9 +108,9 @@
 
   };
 
-  ViewQuestionController.$inject = ['questionsFactory', 'distractorsFactory', '$routeParams'];
+  QuestionController.$inject = ['questionsFactory', 'distractorsFactory', '$routeParams'];
 
   // The Controller is part of the module.
-  angular.module('questionsApp').controller('viewQuestionController', ViewQuestionController);
+  angular.module('questionsApp').controller('questionController', QuestionController);
 
 })();

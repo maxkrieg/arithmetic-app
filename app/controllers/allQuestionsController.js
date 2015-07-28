@@ -1,6 +1,6 @@
-(function questionsControllerIIFE() {
+(function allQuestionsControllerIIFE() {
 
-  var QuestionsController = function(questionsFactory) {
+  var AllQuestionsController = function(questionsFactory) {
 
     var vm = this;
     vm.questions = [];
@@ -32,9 +32,9 @@
 
   };
 
-  QuestionsController.$inject = ['questionsFactory'];
+  AllQuestionsController.$inject = ['questionsFactory'];
 
   // The Controller is part of the module.
-  angular.module('questionsApp').controller('questionsController', QuestionsController);
+  angular.module('questionsApp').controller('allQuestionsController', AllQuestionsController);
 
 })();

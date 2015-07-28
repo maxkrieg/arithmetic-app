@@ -28,6 +28,9 @@
     // };
 
     factory.operators = [{
+      id: "default",
+      name: "Select Operator"
+    }, {
       id: "*",
       name: "Multiplication"
     }, {

@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Create New Question</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>Question Preview</h3>
+      <h4>What is {{questionCtrl.newQuestionForm.first_operand | number}} {{questionCtrl.newQuestionForm.operator}} {{questionCtrl.newQuestionForm.second_operand | number}}?</h4>
+      <h5>Answer: {{questionCtrl.calculatedAnswer(questionCtrl.newQuestionForm.first_operand, questionCtrl.newQuestionForm.second_operand, questionCtrl.newQuestionForm.operator) | number}}</h5>
+    </div>
+    <!-- View Distractors Col -->
+    <div class="col-xs-6">
+      <h3>Distractors Preview</h3>
+      <ul>
+        <li ng-repeat="distractor in questionCtrl.distractors">{{distractor.distractor | number}}</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+
+  <div class="row">
+    <!-- New Question Form -->
+    <form class="col-xs-6" ng-hide="newQuestionForm">
+      <h4>Question Form</h4>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label for="first_operand">First Operand</label>
+            <input type="text" ng-model="questionCtrl.newQuestionForm.first_operand" class="form-control" id="first_operand">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label for="second_operand">Second Operand</label>
+            <input type="text" class="form-control" id="second_operand" ng-model="questionCtrl.newQuestionForm.second_operand">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <label for="operator">Operator</label>
+          <select ng-model="questionCtrl.newQuestionForm.operator" ng-options="obj.id as obj.name for obj in questionCtrl.operators">
+            <option value="default">Select Operator</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-sm btn-success" ng-click="createDistractorForm = !createDistractorForm; newQuestionForm = !newQuestionForm">Save</button>
+      <button type="cancel" class="btn btn-sm btn-danger" ng-click="">Cancel</button>
+    </form>
+
+    <!-- Add Distractors Form -->
+    <form ng-show="createDistractorForm" class="col-xs-6">
+      <h4>Distractor Form</h4>
+
+      <div class="input-group">
+        <input type="text" class="form-control" id="" ng-model="questionCtrl.newDistractor.distractor">
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="button" ng-click="questionCtrl.addDistractor();">Add</button>
+        </span>
+      </div>
+
+<!--       <button type="submit" class="btn btn-sm btn-success" ng-click="questionCtrl.addDistractor(); createDistractorForm = !createDistractorForm;">Add</button> -->
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-large btn-primary" ng-click="">Done</button>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+  <br><br>
+  newQuestionForm:<br>
+  {{questionCtrl.newQuestionForm}}<br>
+  newDistractorForm:<br>
+  {{questionCtrl.newDistractor}}
+</div>
