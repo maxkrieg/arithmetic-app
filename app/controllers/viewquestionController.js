@@ -32,18 +32,16 @@
     init();
 
     vm.calculatedAnswer = function(first_operand, second_operand, operator) {
-      var first = parseInt(first_operand),
-        second = parseInt(second_operand),
-        answer;
+      var answer;
       if (operator === "*") {
-        answer = first * second;
+        answer = first_operand * second_operand;
       } else if (operator === "+") {
-        answer = first + second;
+        answer = first_operand + second_operand;
       } else if (operator === "-") {
-        answer = first - second;
+        answer = first_operand - second_operand;
       }
-      vm.question.answer = answer.toString();
-      return answer.toString();
+      vm.question.answer = answer;
+      return answer;
     };
 
     vm.editQuestion = function() {

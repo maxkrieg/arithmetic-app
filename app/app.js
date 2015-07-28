@@ -1,5 +1,5 @@
 (function questionsAppIIFE() {
-  var app = angular.module('questionsApp', ['ngRoute']);
+  var app = angular.module('questionsApp', ['ngRoute', 'angularUtils.directives.dirPagination']);
 
   app.config(function($routeProvider) {
     $routeProvider

@@ -11,7 +11,11 @@
     function init() {
       questionsFactory.getQuestions()
         .success(function(data) {
-          console.log("success getting questionsss");
+          console.log("success getting questions");
+          // data.questions.forEach(function(obj) {
+          //   console.log(obj);
+          //   obj.answer = questionsFactory.calculatedAnswer(obj.first_operand, obj.second_operand, obj.operator);
+          // });
           vm.questions = data.questions;
         })
         .error(function(data, status, headers, config) {

@@ -28,12 +28,16 @@
   </div>
   <div class="row">
     <div class="col-xs-6">
+      <dir-pagination-controls></dir-pagination-controls>
       <div class="list-group">
-        <a href="#/viewquestion/{{question.id}}" class="list-group-item" ng-repeat="question in questionsCtrl.questions | filter:filters | orderBy:questionsCtrl.sortBy:questionsCtrl.reverse">
-        What is {{question.first_operand | number}} {{question.operator}} {{question.second_operand | number}}?  <strong>{{question.answer | number}}</strong></a>
+        <a href="#/viewquestion/{{question.id}}" class="list-group-item" dir-paginate="question in questionsCtrl.questions | filter:filters | itemsPerPage: 20 | orderBy:questionsCtrl.sortBy:questionsCtrl.reverse">
+        What is {{question.first_operand | number}} {{question.operator}} {{question.second_operand | number}}?  <strong>{{question.answer | number}}</strong>
+        </a>
       </div>
     </div>
   </div>
 
 </div>
+
+<!-- ng-repeat="question in questionsCtrl.questions | filter:filters | orderBy:questionsCtrl.sortBy:questionsCtrl.reverse" -->
 
