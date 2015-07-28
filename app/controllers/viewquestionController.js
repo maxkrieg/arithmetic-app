@@ -8,7 +8,6 @@
     vm.distractors = [];
     vm.newDistractor = {};
     vm.newDistractor.distractor = "";
-    vm.filters = {};
 
     function init() {
       questionsFactory.getQuestion(questionId)
@@ -100,6 +99,8 @@
         });
 
     };
+
+
 
   };
 

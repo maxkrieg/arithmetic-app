@@ -5,7 +5,8 @@
     var vm = this;
     vm.questions = [];
     vm.operators = questionsFactory.operators;
-
+    vm.sortBy = "answer";
+    vm.reverse = false;
 
     function init() {
       questionsFactory.getQuestions()
@@ -19,6 +20,11 @@
     }
 
     init();
+
+    vm.doSort = function(propName) {
+      vm.sortBy = propName;
+      vm.reverse = !vm.reverse;
+    };
 
   };
 

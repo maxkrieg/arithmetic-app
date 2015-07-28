@@ -8,7 +8,7 @@
   <div class="row">
     <div class="input-field col-xs-12">
       <h4>Filter by Operator</h4>
-      <div class="btn-group" role="group" aria-label="...">
+      <div class="btn-group btn-group-sm" role="group" aria-label="...">
         <button type="button" class="btn btn-warning" ng-click="filters.operator = '*'">Multiplication</button>
         <button type="button" class="btn btn-warning" ng-click="filters.operator = '+'">Addition</button>
         <button type="button" class="btn btn-warning" ng-click="filters.operator = '-'">Subtraction</button>
@@ -17,9 +17,19 @@
     </div>
   </div>
   <div class="row">
+    <div class="input-field col-xs-12">
+      <h4>Sort By:</h4>
+      <div class="btn-group btn-group-sm" role="group" aria-label="...">
+        <button type="button" class="btn btn-info" ng-click="questionsCtrl.doSort('first_operand')">First Operand</button>
+        <button type="button" class="btn btn-info" ng-click="questionsCtrl.doSort('second_operand')">Second Operand</button>
+        <button type="button" class="btn btn-info" ng-click="questionsCtrl.doSort('answer')">Answer</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-xs-6">
       <div class="list-group">
-        <a href="#/viewquestion/{{question.id}}" class="list-group-item" ng-repeat="question in questionsCtrl.questions | filter:filters">
+        <a href="#/viewquestion/{{question.id}}" class="list-group-item" ng-repeat="question in questionsCtrl.questions | filter:filters | orderBy:questionsCtrl.sortBy:questionsCtrl.reverse">
         What is {{question.first_operand | number}} {{question.operator}} {{question.second_operand | number}}?  <strong>{{question.answer | number}}</strong></a>
       </div>
     </div>
