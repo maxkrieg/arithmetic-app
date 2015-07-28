@@ -15,6 +15,10 @@
       return $http.put('http://localhost:3000/questions/' + questionId, data);
     };
 
+    factory.createQuestion = function(data) {
+      return $http.post('http://localhost:3000/questions', data);
+    };
+
     // factory.calculatedAnswer = function(first_operand, second_operand, operator) {
     //   var answer;
     //   if (operator === "*") {

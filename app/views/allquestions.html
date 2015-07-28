@@ -30,7 +30,7 @@
     <div class="col-xs-6">
       <dir-pagination-controls></dir-pagination-controls>
       <div class="list-group">
-        <a href="#/viewquestion/{{question.id}}" class="list-group-item" dir-paginate="question in allQuestionsCtrl.questions | filter:filters | itemsPerPage: 20 | orderBy:allQuestionsCtrl.sortBy:allQuestionsCtrl.reverse">
+        <a href="#/viewquestion/{{question.id}}" class="list-group-item" dir-paginate="question in allQuestionsCtrl.questions | filter:filters | itemsPerPage: 15 | orderBy:allQuestionsCtrl.sortBy:allQuestionsCtrl.reverse">
         What is {{question.first_operand | number}} {{question.operator}} {{question.second_operand | number}}?  <strong>{{question.answer | number}}</strong>
         </a>
       </div>

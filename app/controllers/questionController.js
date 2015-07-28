@@ -22,9 +22,6 @@
     vm.newQuestionForm = {};
     vm.newQuestionForm.operator = "default";
 
-    // To store newly created question id (createquestion view)
-    vm.newQuestionId = "";
-
     // Get question and distractors when page loads (viewquestion view only)
     function init() {
       questionsFactory.getQuestion(questionId)
@@ -66,7 +63,7 @@
       return answer;
     };
 
-    // Edit existing Question
+    // Edit existing Question (viewquestion view)
     vm.editQuestion = function() {
       questionsFactory.editQuestion(questionId, {
         question: vm.question
@@ -79,7 +76,21 @@
         });
     };
 
-    // Edit existing Distractors
+    // Create new question (createquestion view)
+    vm.createQuestion = function() {
+      questionsFactory.createQuestion({
+        question: vm.newQuestionForm
+      })
+        .success(function(obj) {
+          console.log('success creating question');
+          questionId = obj.question.id;
+        })
+        .error(function() {
+          console.log('error creating question');
+        });
+    };
+
+    // Edit existing Distractors (viewquestion view)
     vm.editDistractors = function() {
       var distractorId;
       vm.distractors.forEach(function(obj) {
