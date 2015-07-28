@@ -1,5 +1,5 @@
 {
-  "name": "wdi-angular",
+  "name": "arithmetic-app",
   "version": "0.0.1",
   "dependencies": {
     "angular": "1.4",

@@ -1,5 +1,5 @@
 angular.module("questionsApp").value('appSettings', {
   title: "Questions Application",
   version: "1.0",
-  railsURI: "http://localhost:3000/"
+  railsURI: 'http://localhost:3000' || 'https://arithmetic-app.herokuapp.com'
 });

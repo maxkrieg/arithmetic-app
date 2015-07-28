@@ -5,12 +5,13 @@
     </div>
   </div>
   <div class="row">
+    <!-- Question Preview -->
     <div class="col-xs-6">
       <h3>Question Preview</h3>
       <h4>What is {{questionCtrl.newQuestionForm.first_operand | number}} {{questionCtrl.newQuestionForm.operator}} {{questionCtrl.newQuestionForm.second_operand | number}}?</h4>
       <h5>Answer: {{questionCtrl.calculatedAnswer(questionCtrl.newQuestionForm.first_operand, questionCtrl.newQuestionForm.second_operand, questionCtrl.newQuestionForm.operator) | number}}</h5>
     </div>
-    <!-- View Distractors Col -->
+    <!-- Distractors Preview -->
     <div class="col-xs-6">
       <h3>Distractors Preview</h3>
       <ul>

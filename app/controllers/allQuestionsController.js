@@ -2,29 +2,35 @@
 
   var AllQuestionsController = function(questionsFactory) {
 
+    // Alias for this controller
     var vm = this;
+
+    // Array to store questions from API
     vm.questions = [];
+
+    // Pull in operators
     vm.operators = questionsFactory.operators;
+
+    // Default values for sorting
     vm.sortBy = "answer";
     vm.reverse = false;
 
+    // Get all questions from API on page load
     function init() {
       questionsFactory.getQuestions()
         .success(function(data) {
           console.log("success getting questions");
-          // data.questions.forEach(function(obj) {
-          //   console.log(obj);
-          //   obj.answer = questionsFactory.calculatedAnswer(obj.first_operand, obj.second_operand, obj.operator);
-          // });
+          // Save questions into vm.questions array
           vm.questions = data.questions;
         })
         .error(function(data, status, headers, config) {
           console.log("Error getting questions from the remote api");
         });
     }
-
+    // Immediately invoke the above
     init();
 
+    // Method for Sorting
     vm.doSort = function(propName) {
       vm.sortBy = propName;
       vm.reverse = !vm.reverse;
@@ -34,7 +40,6 @@
 
   AllQuestionsController.$inject = ['questionsFactory'];
 
-  // The Controller is part of the module.
   angular.module('questionsApp').controller('allQuestionsController', AllQuestionsController);
 
 })();

@@ -10,15 +10,15 @@
     // Get operators from factory
     vm.operators = questionsFactory.operators;
 
-    // For existing question (viewquestion view)
+    // For holding existing question and distractors
     vm.question = {};
     vm.distractors = [];
 
-    // For viewquestion and createquestion view
+    // Construct the new distractor object
     vm.newDistractor = {};
     vm.newDistractor.distractor = "";
 
-    // For createquestion view
+    // Construct the new question object
     vm.newQuestionForm = {};
     vm.newQuestionForm.operator = "default";
 
@@ -122,7 +122,7 @@
         });
     };
 
-    // Delete existing distractor
+    // Delete existing distractor (viewquestion view)
     vm.deleteDistractor = function(distractorId, index) {
       distractorsFactory.deleteDistractor(questionId, distractorId)
         .success(function() {
